@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task List</title>
+  <link rel="stylesheet" href="/css/taskDisplay.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Task List</h1>
+    <% if (tasks.length > 0) { %>
+      <div class="table-container">
+        <% tasks.forEach(task => { %>
+          <div class="table-card">
+            <div class="table-card-header">
+              <h3><%= task.name %></h3>
+            </div>
+            <div class="table-card-body">
+              <p><strong>Description:</strong> <%= task.description %></p>
+              <p><strong>Scheduled Time:</strong> <%= new Date(task.scheduledTime).toLocaleString() %></p>
+              <p><strong>Status:</strong> <%= task.status %></p>
+            </div>
+            <br>
+            <div class="table-card-actions">
+              <form action="/api/update" method="POST" style="display: inline;">
+                <input type="hidden" name="taskId" value="<%= task.id %>">
+                <select name="newStatus">
+                  <option value="Pending" <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                  <option value="Running" <%= task.status === 'Running' ? 'selected' : '' %>>Running</option>
+                  <option value="Completed" <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+                  <option value="Failed" <%= task.status === 'Failed' ? 'selected' : '' %>>Failed</option>
+                </select>
+                <button type="submit">Update</button>
+              </form>
+              <form action="/api/remove" method="POST" style="display: inline;">
+                <input type="hidden" name="taskId" value="<%= task.id %>">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="delete-btn">Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-message">No tasks found.</div>
+    <% } %>
+    <br>
+    <a href="/api/tasks/new">Add A New Task</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Task</title>
+  <link rel="stylesheet" href="/css/taskForm.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create a New Task</h1>
+    <form action="/api/tasks" method="POST">
+      <div class="mb-3">
+        <label for="name">Task Name</label>
+        <input type="text" id="name" name="name" required placeholder="Boil Eggs..">
+      </div>
+
+      <div class="mb-3">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required placeholder="Boild two eggs for 3 mins...."></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="scheduledTime">Scheduled Time</label>
+        <input type="datetime-local" id="scheduledTime" name="scheduledTime" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+          <option value="choose" disabled selected  >Choose an option</option>
+          <option value="pending" >Pending</option>
+          <option value="running">Running</option>
+          <option value="completed">Completed</option>
+          <option value="failed">Failed</option>
+        </select>
+      </div>
+      <div class="ongoing">
+        <button type="submit">Create Task</button>
+        <a href="/api/tasks">See Ongoing Tasks</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
