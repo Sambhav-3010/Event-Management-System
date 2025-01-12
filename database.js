@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      "mongodb+srv://sambhavmanitripathi:sR5Qx0hc4BAURGYU@events.kqwrs.mongodb.net/",
+      "mongodb://atlas-sql-6783f7fbded216794da4ac1f-kqwrs.a.query.mongodb.net/test?ssl=true&authSource=admin",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
