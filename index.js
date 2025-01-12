@@ -1,6 +1,6 @@
 const express = require("express");
 const connectDB = require("./database");
-const userRoutes = require("./routes/index"); // Use meaningful naming
+const userRoutes = require("./routes/app");
 
 const app = express();
 const PORT = 3000;

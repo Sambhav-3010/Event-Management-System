@@ -31,30 +31,26 @@ router.post("/tasks", async (req, res) => {
   }
 });
 
-router.post('/update', async (req, res) => {
-    const { taskId, newStatus } = req.body;
-    try{
-        await Task.findByIdAndUpdate(taskId, { status: newStatus });
-        res.redirect("/api/tasks");
-    }
-    catch(err){
-        console.error(err);
-        res.status(500).send("Error updating task status");
-    }
+router.post("/update", async (req, res) => {
+  const { taskId, newStatus } = req.body;
+  try {
+    await Task.findByIdAndUpdate(taskId, { status: newStatus });
+    res.redirect("/api/tasks");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error updating task status");
+  }
 });
 
-
-router.post('/remove', async (req, res) => {
-    const { taskId } = req.body;
-    try{
-        await Task.findByIdAndDelete(taskId);
-        res.redirect("/api/tasks");
-    }
-    catch(err){
-        console.error(err);
-        res.status(500).send("Error deleting task");
-    }
+router.post("/remove", async (req, res) => {
+  const { taskId } = req.body;
+  try {
+    await Task.findByIdAndDelete(taskId);
+    res.redirect("/api/tasks");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error deleting task");
+  }
 });
-
 
 module.exports = router;
