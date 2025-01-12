@@ -11,13 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api", userRoutes);
 app.set('views', path.join(__dirname, '../views'));
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 connectDB();
 
 app.get("/", (req, res) => {
-  res.redirect("/api/tasks/new");
+  res.render('taskForm');
 });
 
 app.listen(PORT, () => {
