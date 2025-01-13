@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    const connectDB = await mongoose.connect(
-      "mongodb://atlas-sql-6783f7fbded216794da4ac1f-kqwrs.a.query.mongodb.net/test?ssl=true&authSource=admin"
+    await mongoose.connect(
+      "mongodb+srv://sambhavmanitripathi:sR5Qx0hc4BAURGYU@events.kqwrs.mongodb.net/"
     );
     console.log("MongoDB Connected");
   } catch (error) {
